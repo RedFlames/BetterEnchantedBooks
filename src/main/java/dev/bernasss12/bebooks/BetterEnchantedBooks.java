@@ -43,16 +43,14 @@ public class BetterEnchantedBooks implements ClientModInitializer {
     }
 
     /**
-     * This method gets called when the Title screen gets loaded, by this point all
-     * enchantment registry should be done.
+     * This method gets called once after every mod's entry points. By this point all enchantments should be registered.
      */
-    public static void onTitleScreenLoaded(){
-        if (!ModConfig.configsFirstLoaded) {
+        public static void lateInit() {
             //TooltipDrawerHelper.populateEnchantmentIconList();
-            ModConfig.loadAndPopulateConfig();
+                    ModConfig.loadAndPopulateConfig();
             ModConfig.saveConfig();
         }
-    }
+
 
     public static int getColorFromEnchantmentList(ItemStack stack) {
         if (!ModConfig.doColorBooks) return DEFAULT_BOOK_STRIP_COLOR;
